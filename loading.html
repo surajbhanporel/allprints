@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from print-pro.store/printer/loading.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Apr 2026 21:03:33 GMT -->
+<head>
+<meta charset="UTF-8">
+<title>Setting Up Your Printer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Zoho SalesIQ Widget Code -->
+<script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script>
+<script id="zsiqscript" src="https://salesiq.zohopublic.com/widget?wc=siqeccc5677a70414195d01707310131e13fd0e334b2ab7f6e249ca2dc4bfa77d60" defer></script>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+body{
+    background:#ffffff;
+    color:#333;
+    font-size: 16px;
+    line-height: 1.5;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* LOADING CONTAINER */
+.loading-container {
+    min-height: 100vh;
+    padding: 10px;
+    background:
+        linear-gradient(90deg, #0076CE, #00AEEF),
+        url("../../bluechipitservices.com/public/services/service-printer-setup.html");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+/* CANON LOGO - Compact */
+.canon-logo {
+    position: relative;
+    top: 0;
+    left: 0;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-bottom: 5px;
+    padding: 8px;
+    z-index: 100;
+}
+.canon-logo span {
+    color: #ffd700;
+}
+
+/* LOADING CONTENT - Less padding */
+.loading-content {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    animation: fadeIn 0.4s ease-out;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* PRINTER IMAGE - Restored but smaller */
+.printer-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 10px;
+    animation: float 3s ease-in-out infinite;
+    text-align: center;
+}
+.printer-icon img {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 3px 8px rgba(220, 0, 0, 0.2));
+}
+
+/* LOADING TEXT - Minimal gap */
+.loading-text {
+    margin-bottom: 5px;
+    text-align: center;
+}
+.loading-text h1 {
+    color: #dc0000;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+.loading-text p {
+    color: #666;
+    font-size: 15px;
+    line-height: 1.3;
+}
+
+/* DOWNLOADING ANIMATION STATUS */
+.downloading-animation {
+    margin: 5px auto;
+    text-align: center;
+    color: #dc0000;
+    font-size: 14px;
+    font-weight: 500;
+}
+.downloading-animation span {
+    display: inline-block;
+    animation: downloading 1.5s infinite;
+}
+
+/* RED CIRCLE SPINNER */
+.red-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+    height: 120px;
+    width: 100%;
+}
+
+.spinner {
+    width: 80px;
+    height: 80px;
+    border: 8px solid #ffeaea;
+    border-top: 8px solid #dc0000;
+    border-radius: 50%;
+    animation: spin 1.5s linear infinite;
+    position: relative;
+}
+
+.spinner::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    border-top: 4px solid #ff4444;
+    animation: spinReverse 2s linear infinite;
+}
+
+/* PROGRESS BAR - Reduced gap above/below */
+.progress-container {
+    width: 100%;
+    margin: 10px 0;
+}
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #333;
+}
+.progress-label {
+    font-weight: 600;
+    color: #28a745;
+    font-size: 15px;
+}
+.progress-percentage {
+    font-weight: 700;
+    color: #28a745;
+    font-size: 16px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #e0e0e0;
+}
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #28a745, #5cb85c);
+    border-radius: 4px;
+    transition: width 0.2s ease;
+    position: relative;
+}
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.6), 
+        transparent);
+    animation: shimmer 1.5s infinite;
+}
+
+/* ERROR WARNING */
+.error-warning {
+    display: none;
+    margin-top: 8px;
+    padding: 8px;
+    background: #fff5f5;
+    border: 1px solid #ffcccc;
+    border-radius: 5px;
+    color: #dc3545;
+    font-weight: 500;
+    text-align: center;
+    font-size: 13px;
+}
+.error-warning::before {
+    content: '⚠️';
+    margin-right: 5px;
+    font-size: 13px;
+}
+
+/* LOADING STEPS - Compact */
+.loading-steps {
+    margin-top: 15px;
+}
+.loading-steps h3 {
+    color: #dc0000;
+    font-size: 17px;
+    margin-bottom: 12px;
+    text-align: center;
+    font-weight: 600;
+}
+.steps-list {
+    list-style: none;
+}
+.step-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    padding: 10px 12px;
+    background: #f8f9fa;
+    border-radius: 7px;
+    border-left: 3px solid #e0e0e0;
+    transition: all 0.2s ease;
+    min-height: 48px;
+}
+.step-item.active {
+    border-left-color: #28a745;
+    background: #f0fff4;
+    box-shadow: 0 2px 6px rgba(40, 167, 69, 0.1);
+}
+.step-item.completed {
+    border-left-color: #28a745;
+    background: #f0fff4;
+}
+.step-number {
+    width: 26px;
+    height: 26px;
+    background: #e0e0e0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #666;
+    margin-right: 10px;
+    flex-shrink: 0;
+    font-size: 13px;
+}
+.step-item.active .step-number {
+    background: #28a745;
+    color: white;
+    animation: pulse 1.5s infinite;
+}
+.step-item.completed .step-number {
+    background: #28a745;
+    color: white;
+}
+.step-text {
+    flex: 1;
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+    line-height: 1.3;
+}
+.step-item.completed .step-text {
+    color: #28a745;
+}
+.checkmark {
+    margin-left: 8px;
+    color: #28a745;
+    font-weight: bold;
+    font-size: 15px;
+    display: none;
+}
+.step-item.completed .checkmark {
+    display: block;
+}
+
+/* STATUS MESSAGE */
+.status-message {
+    margin-top: 12px;
+    padding: 8px;
+    background: #e3f2fd;
+    border-radius: 5px;
+    border-left: 3px solid #0a5b85;
+    font-size: 13px;
+    color: #0a5b85;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.status-message::before {
+    content: 'ⓘ';
+    margin-right: 5px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+/* FOOTER */
+.loading-footer {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    padding: 10px;
+    margin-top: 15px;
+}
+
+/* ANIMATIONS */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-3px); }
+    20%, 40%, 60%, 80% { transform: translateX(3px); }
+}
+
+@keyframes downloading {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
+@keyframes greenPulse {
+    0%, 100% { 
+        filter: brightness(1) hue-rotate(0deg);
+    }
+    50% { 
+        filter: brightness(1.2) hue-rotate(30deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spinReverse {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+/* AUTO-SCROLL HIGHLIGHT */
+.auto-scroll-highlight {
+    position: relative;
+}
+.auto-scroll-highlight::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 8px;
+    border: 2px solid rgba(220, 0, 0, 0.3);
+    animation: highlightPulse 1.5s ease-out;
+    pointer-events: none;
+}
+
+@keyframes highlightPulse {
+    0% {
+        border-color: rgba(220, 0, 0, 0.8);
+        box-shadow: 0 0 0 0 rgba(220, 0, 0, 0.4);
+    }
+    100% {
+        border-color: rgba(220, 0, 0, 0.1);
+        box-shadow: 0 0 0 6px rgba(220, 0, 0, 0);
+    }
+}
+
+/* MOBILE RESPONSIVE */
+@media(max-width:768px){
+    .loading-container {
+        padding: 8px;
+    }
+    
+    .canon-logo {
+        font-size: 18px;
+        margin-bottom: 4px;
+        padding: 6px;
+    }
+    
+    .loading-content {
+        padding: 18px 15px;
+        margin: 0 auto;
+        border-radius: 12px;
+    }
+    
+    .printer-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 8px;
+    }
+    
+    .loading-text h1 {
+        font-size: 21px;
+        margin-bottom: 4px;
+    }
+    
+    .loading-text p {
+        font-size: 14px;
+    }
+    
+    /* Mobile spinner size */
+    .red-spinner {
+        height: 100px;
+        margin: 0 auto 15px;
+    }
+    
+    .spinner {
+        width: 70px;
+        height: 70px;
+        border-width: 6px;
+    }
+    
+    .step-item {
+        padding: 9px 10px;
+        margin-bottom: 7px;
+        min-height: 45px;
+    }
+    
+    .step-number {
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+        margin-right: 8px;
+    }
+    
+    .step-text {
+        font-size: 13px;
+    }
+    
+    .progress-container {
+        margin: 8px 0;
+    }
+    
+    .loading-steps h3 {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+}
+
+/* Small phones */
+@media(max-width:480px){
+    .loading-content {
+        padding: 16px 12px;
+    }
+    
+    .loading-text h1 {
+        font-size: 19px;
+    }
+    
+    .loading-steps h3 {
+        font-size: 15px;
+    }
+    
+    .red-spinner {
+        height: 90px;
+    }
+    
+    .spinner {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .step-item {
+        padding: 8px 10px;
+        margin-bottom: 6px;
+        min-height: 44px;
+    }
+    
+    .step-text {
+        font-size: 13px;
+    }
+}
+
+/* Extra small devices */
+@media(max-width:375px){
+    .red-spinner {
+        height: 80px;
+    }
+    
+    .spinner {
+        width: 55px;
+        height: 55px;
+    }
+}
+
+/* LANDSCAPE MODE */
+@media (max-height: 600px) and (orientation: landscape) {
+    .loading-content {
+        margin: 0 auto;
+        padding: 12px;
+    }
+    
+    .printer-icon {
+        display: none; /* Hide in landscape to save space */
+    }
+    
+    .red-spinner {
+        height: 70px;
+        margin-bottom: 10px;
+    }
+    
+    .spinner {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .step-item {
+        padding: 6px 8px;
+        margin-bottom: 5px;
+        min-height: 40px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="loading-container">
+    
+    <!-- Canon Logo -->
+    <div class="canon-logo">
+        Printer Setup
+    </div>
+
+    <!-- Loading Content -->
+    <div class="loading-content">
+        
+        <!-- Printer Icon - RESTORED -->
+        <div class="printer-icon">
+            <img src="../../123.hp.com/resources/assets/img/printer_icon_gray.png" alt="Printer">
+        </div>
+        
+        <!-- Loading Text -->
+        <div class="loading-text">
+            <h1>Setting Up Your Printer</h1>
+            <p>Please wait while we configure your printer. This will take a few moments.</p>
+        </div>
+        
+        <!-- Downloading Animation Status -->
+        <div class="downloading-animation" id="downloadingStatus">
+            <span>▼ Downloading setup files...</span>
+        </div>
+        
+        <!-- Red Circle Spinner -->
+        <div class="red-spinner">
+            <div class="spinner"></div>
+        </div>
+        
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-info">
+                <span class="progress-label">Installation Progress</span>
+                <span class="progress-percentage" id="percentage">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+        
+        <!-- Error Warning -->
+        <div class="error-warning" id="errorWarning">
+            Connection issue detected. Trying to reconnect...
+        </div>
+        
+        <!-- Loading Steps -->
+        <div class="loading-steps">
+            <h3>Current Setup Steps</h3>
+            <ul class="steps-list">
+                <li class="step-item active" id="step1">
+                    <div class="step-number">1</div>
+                    <div class="step-text">Detecting your printer</div>
+                    <div class="checkmark">✓</div>
+                </li>
+                <li class="step-item" id="step2">
+                    <div class="step-number">2</div>
+                    <div class="step-text">Installing Printer Smart software</div>
+                    <div class="checkmark">✓</div>
+                </li>
+                <li class="step-item" id="step3">
+                    <div class="step-number">3</div>
+                    <div class="step-text">Configuring printer settings</div>
+                    <div class="checkmark">✓</div>
+                </li>
+                <li class="step-item" id="step4">
+                    <div class="step-number">4</div>
+                    <div class="step-text">Connecting to your network</div>
+                    <div class="checkmark">✓</div>
+                </li>
+                <li class="step-item" id="step5">
+                    <div class="step-number">5</div>
+                    <div class="step-text">Finalizing setup</div>
+                    <div class="checkmark">✓</div>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Status Message -->
+        <div class="status-message" id="statusMessage">
+            ⚠️ Do not turn off your printer during setup
+        </div>
+        
+    </div>
+    
+    <!-- Footer -->
+    <div class="loading-footer">
+        © 2025 Printer Inc.
+    </div>
+    
+</div>
+
+<!-- Loading Script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const progressFill = document.getElementById('progressFill');
+    const percentage = document.getElementById('percentage');
+    const statusMessage = document.getElementById('statusMessage');
+    const errorWarning = document.getElementById('errorWarning');
+    const downloadingStatus = document.getElementById('downloadingStatus');
+    const steps = [
+        document.getElementById('step1'),
+        document.getElementById('step2'),
+        document.getElementById('step3'),
+        document.getElementById('step4'),
+        document.getElementById('step5')
+    ];
+    
+    const messages = [
+        "Searching for connected printers...",
+        "Downloading necessary software...",
+        "Installing printer drivers...",
+        "Setting up network connection...",
+        "Performing final checks...",
+        "Setup complete!"
+    ];
+    
+    let progress = 0;
+    let currentStep = 0;
+    const totalTime = 15000; // 15 seconds total
+    const intervalTime = 80; // Update every 80ms (faster)
+    const totalUpdates = totalTime / intervalTime;
+    const progressPerUpdate = 100 / totalUpdates;
+    let hasErrorShown = false;
+    let scrollTimeout = null;
+    
+    // Function to auto-scroll to active step
+    function scrollToActiveStep() {
+        const activeStep = document.querySelector('.step-item.active');
+        if (activeStep) {
+            // Add highlight effect
+            activeStep.classList.add('auto-scroll-highlight');
+            
+            // Smooth scroll to step
+            activeStep.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+                inline: 'nearest'
+            });
+            
+            // Remove highlight after animation
+            setTimeout(() => {
+                activeStep.classList.remove('auto-scroll-highlight');
+            }, 1500);
+        }
+    }
+    
+    // Update downloading animation color as progress increases
+    function updateDownloadingAnimation() {
+        const downloadingSpan = downloadingStatus.querySelector('span');
+        const greenIntensity = Math.min(255, Math.floor((progress / 100) * 255));
+        const colorValue = 255 - greenIntensity;
+        
+        // Gradually change from black to green
+        downloadingSpan.style.color = `rgb(${colorValue}, ${greenIntensity}, ${colorValue})`;
+        
+        // Add pulsing effect when downloading is in progress
+        if (progress > 10 && progress < 90) {
+            downloadingSpan.style.animation = 'downloading 1.2s infinite, greenPulse 2s infinite';
+        }
+        
+        // Update downloading text based on progress
+        if (progress < 25) {
+            downloadingStatus.innerHTML = '<span>▼ Downloading setup files (20 MB)...</span>';
+        } else if (progress < 50) {
+            downloadingStatus.innerHTML = '<span>▼ Downloading drivers (45 MB)...</span>';
+        } else if (progress < 75) {
+            downloadingStatus.innerHTML = '<span>▼ Installing components...</span>';
+        } else if (progress < 90) {
+            downloadingStatus.innerHTML = '<span>▼ Configuring settings...</span>';
+        } else {
+            downloadingStatus.innerHTML = '<span>▼ Finalizing installation...</span>';
+        }
+    }
+    
+    // Function to update progress
+    function updateProgress() {
+        progress += progressPerUpdate;
+        
+        if (progress > 100) progress = 100;
+        
+        // Update progress bar
+        progressFill.style.width = `${progress}%`;
+        percentage.textContent = `${Math.round(progress)}%`;
+        
+        // Update downloading animation color
+        updateDownloadingAnimation();
+        
+        // Update steps based on progress
+        if (progress >= 15 && currentStep === 0) {
+            completeStep(0);
+            currentStep = 1;
+            statusMessage.textContent = messages[1];
+            scrollToActiveStep();
+        }
+        if (progress >= 35 && currentStep === 1) {
+            completeStep(1);
+            currentStep = 2;
+            statusMessage.textContent = messages[2];
+            scrollToActiveStep();
+        }
+        if (progress >= 55 && currentStep === 2) {
+            completeStep(2);
+            currentStep = 3;
+            statusMessage.textContent = messages[3];
+            scrollToActiveStep();
+        }
+        if (progress >= 75 && currentStep === 3) {
+            completeStep(3);
+            currentStep = 4;
+            statusMessage.textContent = messages[4];
+            scrollToActiveStep();
+        }
+        
+        // Check for error at 99%
+        if (progress >= 99 && currentStep === 4 && !hasErrorShown) {
+            // Stop further progress
+            showErrorAnimation();
+            return true;
+        }
+        
+        return false;
+    }
+    
+    // Function to show error at 99%
+    function showErrorAnimation() {
+        hasErrorShown = true;
+        
+        // Stop progress at 99%
+        progress = 99;
+        progressFill.style.width = '99%';
+        percentage.innerHTML = '99% <span style="color:#dc3545">⚠️</span>';
+        percentage.style.color = '#dc3545';
+        
+        // Change progress bar color from green to red
+        progressFill.style.background = 'linear-gradient(90deg, #0076CE, #00AEEF)';
+        
+        // Change progress label color to red
+        document.querySelector('.progress-label').style.color = '#dc3545';
+        
+        // Show error warning
+        errorWarning.style.display = 'block';
+        errorWarning.innerHTML = '<strong>Connection Error!</strong> Setup interrupted at 99%';
+        
+        // Change status message
+        statusMessage.innerHTML = '<strong>Error detected!</strong> Redirecting to support...';
+        statusMessage.style.backgroundColor = '#fff5f5';
+        statusMessage.style.borderLeftColor = '#dc3545';
+        statusMessage.style.color = '#dc3545';
+        statusMessage.style.fontWeight = '500';
+        
+        // Change all active steps to error state
+        document.querySelectorAll('.step-item.active').forEach((step) => {
+            step.style.borderLeftColor = '#dc3545';
+            step.style.backgroundColor = '#fff5f5';
+            const stepNumber = step.querySelector('.step-number');
+            stepNumber.style.backgroundColor = '#dc3545';
+            stepNumber.style.animation = 'none';
+        });
+        
+        // After 3 seconds of showing error animation, redirect to error page
+        setTimeout(() => {
+            window.location.href = 'error.html';
+        }, 3000);
+    }
+    
+    // Function to mark step as completed
+    function completeStep(stepIndex) {
+        const step = steps[stepIndex];
+        step.classList.remove('active');
+        step.classList.add('completed');
+        
+        if (stepIndex < steps.length - 1) {
+            steps[stepIndex + 1].classList.add('active');
+        }
+    }
+    
+    // Simulate loading with error at 99%
+    function simulateLoading() {
+        const shouldStop = updateProgress();
+        
+        if (!shouldStop && progress < 99) {
+            // Add slight randomness for natural feel
+            const randomDelay = intervalTime + (Math.random() * 30 - 15);
+            setTimeout(simulateLoading, randomDelay);
+        }
+    }
+    
+    // Start the loading simulation IMMEDIATELY
+    setTimeout(() => {
+        simulateLoading();
+        // Initial scroll to first step
+        setTimeout(scrollToActiveStep, 400);
+    }, 300);
+    
+    // Auto-scroll when user is idle for 3 seconds
+    let idleTimer = null;
+    function resetIdleTimer() {
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(() => {
+            if (progress < 99) {
+                scrollToActiveStep();
+            }
+        }, 2500);
+    }
+    
+    // Add idle detection
+    document.addEventListener('mousemove', resetIdleTimer);
+    document.addEventListener('touchmove', resetIdleTimer);
+    document.addEventListener('keypress', resetIdleTimer);
+    
+    // Start idle timer
+    resetIdleTimer();
+    
+    // Console messages for debugging
+    console.log('Starting printer setup...');
+    setTimeout(() => console.log('Printer detected: Canon PIXMA'), 1200);
+    setTimeout(() => console.log('Downloading drivers...'), 3500);
+    setTimeout(() => console.log('Configuring settings...'), 6500);
+    setTimeout(() => console.log('Network connection established'), 9500);
+    setTimeout(() => console.log('Error: Connection lost at 99%'), 12000);
+});
+</script>
+
+</body>
+
+<!-- Mirrored from print-pro.store/printer/loading.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Apr 2026 21:03:35 GMT -->
+</html>

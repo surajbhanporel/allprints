@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from print-pro.store/printer/error.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Apr 2026 21:03:55 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printer Support</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f7f9fc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+            text-align: center;
+            border-top: 8px solid #dc0000;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .canon-logo {
+            width: 120px;
+            margin: 0 auto 20px;
+            display: block;
+        }
+        
+        .critical-issues-title {
+            color: #dc0000;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+        
+        /* Printer error image - smaller size */
+        .printer-error-img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+            margin: 0 auto 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            display: block;
+        }
+        
+        /* Image caption */
+        .image-caption {
+            color: #333;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        
+        /* Red border container for buttons below image */
+        .image-buttons-container {
+            border: 3px solid #dc0000;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 0 auto 40px;
+            max-width: 800px;
+            background-color: #fff5f5;
+        }
+        
+        .image-buttons-title {
+            color: #333;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        /* Support buttons below image */
+        .support-buttons-below-image {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        
+        /* Issues Container */
+        .issues-container {
+            background-color: #fff5f5;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .issue {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: left;
+            border-left: 5px solid #dc0000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .issue:hover {
+            transform: translateY(-3px);
+        }
+        
+        .issue-title {
+            color: #dc0000;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            line-height: 1.4;
+        }
+        
+        .issue-title:before {
+            content: "⚠️";
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        
+        .support-btn {
+            padding: 15px 25px;
+            font-size: 17px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 210px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            line-height: 1.3;
+            flex-direction: column;
+        }
+        
+        .phone-btn {
+            background-color: #dc0000;
+            color: white;
+        }
+        
+        .chat-btn {
+            background-color: #dc0000;
+            color: white;
+        }
+        
+        .phone-btn:hover, .chat-btn:hover {
+            background-color: #b30000;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(220, 0, 0, 0.3);
+        }
+        
+        /* Phone number specific styling */
+        .phone-number {
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 5px;
+            white-space: nowrap;
+        }
+        
+        .phone-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        /* Expert support container with red border */
+        .expert-container {
+            border: 3px solid #dc0000;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 40px auto;
+            max-width: 800px;
+            background-color: #fff5f5;
+        }
+        
+        .expert-title {
+            color: #333;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        /* Buttons container */
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        
+        /* Rectangular Footer */
+        .footer-container {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .footer-rectangle {
+            background-color: #dc0000;
+            padding: 20px 30px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 8px rgba(220, 0, 0, 0.2);
+        }
+        
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .footer-logo {
+            width: 40px;
+            height: 40px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .footer-text {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        /* For tablet responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+                padding-bottom: 40px;
+            }
+            
+            .canon-logo {
+                width: 100px;
+            }
+            
+            .critical-issues-title {
+                font-size: 26px;
+            }
+            
+            .printer-error-img {
+                max-width: 350px;
+            }
+            
+            .image-caption {
+                font-size: 16px;
+            }
+            
+            .image-buttons-container,
+            .expert-container {
+                padding: 20px;
+            }
+            
+            .image-buttons-title,
+            .expert-title {
+                font-size: 20px;
+            }
+            
+            .issues-container {
+                padding: 20px;
+            }
+            
+            .support-buttons-below-image,
+            .buttons-container {
+                flex-direction: row;
+                gap: 15px;
+                flex-wrap: nowrap;
+            }
+            
+            .support-btn {
+                flex: 1;
+                min-width: 0;
+                max-width: 48%;
+                padding: 12px 15px;
+                font-size: 15px;
+            }
+            
+            .phone-number {
+                font-size: 16px;
+            }
+            
+            .phone-label {
+                font-size: 13px;
+            }
+            
+            .issue-title {
+                font-size: 15px;
+            }
+            
+            .footer-rectangle {
+                padding: 15px 20px;
+            }
+            
+            .footer-text {
+                font-size: 18px;
+            }
+            
+            .footer-logo {
+                width: 25px;
+                height: 25px;
+            }
+            
+            .footer-left {
+                gap: 10px;
+            }
+        }
+        
+        /* For mobile responsiveness */
+        @media (max-width: 480px) {
+            .canon-logo {
+                width: 100px;
+            }
+            
+            .critical-issues-title {
+                font-size: 15px;
+                white-space: normal;
+                overflow: visible;
+                text-overflow: clip;
+                line-height: 1.2;
+                word-break: keep-all;
+                margin-bottom: 20px;
+            }
+            
+            .printer-error-img {
+                max-width: 300px;
+            }
+            
+            .image-caption {
+                font-size: 16px;
+                white-space: normal;
+                overflow: visible;
+                text-overflow: clip;
+                line-height: 1.3;
+                margin-bottom: 20px;
+            }
+            
+            .image-buttons-container,
+            .expert-container {
+                padding: 20px 15px;
+            }
+            
+            .image-buttons-title,
+            .expert-title {
+                font-size: 18px;
+                line-height: 1.3;
+                margin-bottom: 20px;
+            }
+            
+            .issue-title {
+                font-size: 14px;
+                line-height: 1.3;
+            }
+            
+            .issue-title:before {
+                font-size: 12px;
+                margin-right: 8px;
+            }
+            
+            .support-buttons-below-image,
+            .buttons-container {
+                gap: 10px;
+                justify-content: space-between;
+                flex-direction: column;
+            }
+            
+            .support-btn {
+                flex: 1;
+                min-width: 0;
+                max-width: 100%;
+                width: 100%;
+                padding: 12px 10px;
+                font-size: 14px;
+                flex-direction: row;
+                justify-content: flex-start;
+                text-align: left;
+            }
+            
+            .phone-btn {
+                justify-content: space-between;
+            }
+            
+            .phone-number {
+                font-size: 15px;
+                margin-top: 0;
+                margin-left: auto;
+            }
+            
+            .phone-label {
+                font-size: 12px;
+                text-align: left;
+            }
+            
+            .footer-rectangle {
+                padding: 12px 15px;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            
+            .footer-left {
+                width: auto;
+                justify-content: flex-start;
+                gap: 8px;
+            }
+            
+            .footer-text {
+                font-size: 16px;
+            }
+            
+            .footer-logo {
+                width: 20px;
+                height: 20px;
+            }
+        }
+        
+        /* For very small mobile devices */
+        @media (max-width: 360px) {
+            .canon-logo {
+                width: 90px;
+            }
+            
+            .critical-issues-title {
+                font-size: 10px;
+                line-height: 1.1;
+            }
+            
+            .printer-error-img {
+                max-width: 200px;
+            }
+            
+            .image-caption {
+                font-size: 10px;
+            }
+            
+            .image-buttons-title,
+            .expert-title {
+                font-size: 14px;
+            }
+            
+            .issue-title {
+                font-size: 13px;
+                padding: 15px;
+            }
+            
+            .support-btn {
+                padding: 10px 8px;
+                font-size: 13px;
+            }
+            
+            .phone-number {
+                font-size: 13px;
+            }
+            
+            .phone-label {
+                font-size: 11px;
+            }
+            
+            .footer-text {
+                font-size: 14px;
+            }
+            
+            .footer-logo {
+                width: 18px;
+                height: 18px;
+            }
+            
+            .footer-rectangle {
+                padding: 10px 12px;
+            }
+            
+            .footer-left {
+                gap: 6px;
+            }
+        }
+        
+        /* For desktop - ensure buttons are side by side */
+        @media (min-width: 769px) {
+            .support-buttons-below-image,
+            .buttons-container {
+                flex-direction: row;
+            }
+            
+            .support-btn {
+                min-width: 240px;
+            }
+        }
+        
+        /* Touch-friendly for mobile */
+        @media (hover: none) and (pointer: coarse) {
+            .support-btn {
+                min-height: 50px;
+                padding: 15px 20px;
+            }
+            
+            .phone-btn, .chat-btn {
+                -webkit-tap-highlight-color: transparent;
+            }
+        }
+        
+        
+        }
+        
+    </style>
+    <a href="tel:+18336328717" class="call-circle">
+    <span>📞</span>
+</a>
+
+<style>.call-circle {
+    position: fixed;
+    bottom: 10px;
+    left: 20px;
+
+    width: 55px;
+    height: 55px;
+      background-color: rgb(53, 118, 184);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    color: #fff;
+    font-size: 26px;
+    text-decoration: none;
+
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    z-index: 9999;
+
+    animation: pulse 1.5s infinite;
+    transition: 0.3s;
+}
+
+.call-circle:hover {
+    transform: scale(1.1);
+      background-color: rgb(53, 118, 184);
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(59,130,246, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(59,130,246, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(59,130,246, 0);
+    }
+}</style>
+    
+    <!-- Zoho SalesIQ Widget Code - FIXED VERSION -->
+    <script>
+        window.$zoho = window.$zoho || {};
+        $zoho.salesiq = $zoho.salesiq || {
+            widgetcode: "siqeccc5677a70414195d01707310131e13fd0e334b2ab7f6e249ca2dc4bfa77d60",
+            values: {},
+            ready: function() {
+                console.log("Zoho SalesIQ widget is ready");
+                // Set up chat button handlers once widget is ready
+                setupChatButtons();
+            }
+        };
+        
+        // Function to open Zoho chat
+        function openZohoChat() {
+            console.log("Opening Zoho chat...");
+            if (window.$zoho && $zoho.salesiq && $zoho.salesiq.floatwindow) {
+                $zoho.salesiq.floatwindow.visible('show');
+                console.log("Chat window opened");
+            } else {
+                console.log("Zoho widget not available, trying to initialize...");
+                // Try to reload widget if not available
+                if ($zoho.salesiq.widgetcode) {
+                    var s = document.createElement("script");
+                    s.type = "text/javascript";
+                    s.id = "zsiqscript";
+                    s.defer = true;
+                    s.src = "https://salesiq.zohopublic.com/widget?wc=" + $zoho.salesiq.widgetcode;
+                    document.body.appendChild(s);
+                    
+                    // Show alert to user
+                    setTimeout(function() {
+                        if (window.$zoho && $zoho.salesiq && $zoho.salesiq.floatwindow) {
+                            $zoho.salesiq.floatwindow.visible('show');
+                        } else {
+                            alert("Chat is loading. Please try again in a few seconds.");
+                        }
+                    }, 2000);
+                }
+            }
+        }
+        
+        // Function to set up chat button event listeners
+        function setupChatButtons() {
+            const chatBtn1 = document.getElementById('chatSupportBtn1');
+            const chatBtn2 = document.getElementById('chatSupportBtn2');
+            
+            if (chatBtn1) {
+                chatBtn1.onclick = openZohoChat;
+                console.log("Chat button 1 setup complete");
+            }
+            
+            if (chatBtn2) {
+                chatBtn2.onclick = openZohoChat;
+                console.log("Chat button 2 setup complete");
+            }
+        }
+        
+        // Load Zoho SalesIQ widget
+        function loadZohoWidget() {
+            console.log("Loading Zoho widget...");
+            if (!$zoho.salesiq.widgetcode) {
+                $zoho.salesiq.widgetcode = "siqeccc5677a70414195d01707310131e13fd0e334b2ab7f6e249ca2dc4bfa77d60";
+            }
+            
+            var s = document.createElement("script");
+            s.type = "text/javascript";
+            s.id = "zsiqscript";
+            s.defer = true;
+            s.src = "https://salesiq.zohopublic.com/widget?wc=" + $zoho.salesiq.widgetcode;
+            
+            // Add onload event to track when script loads
+            s.onload = function() {
+                console.log("Zoho widget script loaded successfully");
+            };
+            
+            s.onerror = function() {
+                console.error("Failed to load Zoho widget script");
+            };
+            
+            document.body.appendChild(s);
+        }
+        
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM loaded, setting up chat buttons...");
+            
+            // Set up chat buttons initially
+            setupChatButtons();
+            
+            // Load Zoho widget with a small delay to ensure DOM is ready
+            setTimeout(loadZohoWidget, 500);
+            
+            // Phone button functionality
+            const phoneButtons = document.querySelectorAll('.phone-btn');
+            phoneButtons.forEach(button => {
+                button.setAttribute('aria-label', 'Call Toll Free Number +1(833)632-8717');
+                
+                button.addEventListener('touchstart', function() {
+                    this.style.transform = 'scale(0.98)';
+                });
+                
+                button.addEventListener('touchend', function() {
+                    this.style.transform = '';
+                });
+            });
+            
+            // Add keyboard navigation support
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    const activeElement = document.activeElement;
+                    if (activeElement.classList.contains('phone-btn')) {
+                        window.location.href = 'tel:+18336328717';
+                    } else if (activeElement.classList.contains('chat-btn')) {
+                        openZohoChat();
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Canon Logo -->
+        <img src="../../www.nicepng.com/png/detail/135-1358116_error-png.png" alt="Canon Logo" class="canon-logo">
+        
+        <!-- Critical Issues Title -->
+        <h1 class="critical-issues-title">3 PRINTER ISSUES DETECTED</h1>
+        
+        <!-- Printer Error Image -->
+        <img src="Err.png" alt="Printer Error" class="printer-error-img">
+        
+        <!-- Red border container for buttons below image -->
+        <div class="image-buttons-container">
+            <div class="image-buttons-title">Contact Printer Support for Live Assistance</div>
+            
+            <!-- Support Buttons below image -->
+            <div class="support-buttons-below-image">
+                <button class="support-btn phone-btn" onclick="window.location.href='tel:+18336328717';">
+                    <div class="phone-label">Call Tollfree</div>
+                    <div class="phone-number">+1(833)632-8717</div>
+                </button>
+                
+                <button class="support-btn chat-btn" id="chatSupportBtn1">
+                    <div class="phone-label">Chat with Us</div>
+                    <div class="phone-number">Live Expert</div>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Issues Container -->
+        <div class="issues-container">
+            <div class="issue">
+                <div class="issue-title">E32: Cannot find wireless router. Perform setup again.</div>
+                <!-- Description removed as requested -->
+            </div>
+            
+            <div class="issue">
+                <div class="issue-title">U052: Print Head not installed properly or faulty. </div>
+                <!-- Description removed as requested -->
+            </div>
+            
+            <div class="issue">
+                <div class="issue-title">E05 / 1300: Ink Cartridge Problem (not recognized or empty).</div>
+                <!-- Description removed as requested -->
+            </div>
+        </div>
+        
+        <!-- Expert Support Container with red border -->
+        <div class="expert-container">
+            <div class="expert-title">Contact Printer Support for Live Assistance</div>
+            
+            <div class="buttons-container">
+                <button class="support-btn phone-btn" onclick="window.location.href='tel:+18336328717';">
+                    <div class="phone-label">Call Tollfree</div>
+                    <div class="phone-number">+1(833)632-8717</div>
+                </button>
+                
+                <button class="support-btn chat-btn" id="chatSupportBtn2">
+                    <div class="phone-label">Chat with Us</div>
+                    <div class="phone-number">Live Expert</div>
+                </button>
+            </div>
+        </div>
+        <!-- Fixed Call Button -->
+  <a href="tel:+18336328717" class="fixed-call-button">
+    <i class="fa fa-phone"></i>
+  </a>
+        <!-- Rectangular Footer -->
+        <div class="footer-container">
+            <div class="footer-rectangle">
+                <div class="footer-left">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg7blG4XFpVsxRYjIz-1PohJF6uum-stKLPA&amp;s" alt="Canon Logo" class="footer-logo">
+                </div>
+                <div class="footer-text">24x7 Assistance</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- Mirrored from print-pro.store/printer/error.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Apr 2026 21:04:01 GMT -->
+</html>
